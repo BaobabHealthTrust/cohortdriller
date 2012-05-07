@@ -1,15 +1,14 @@
-# = CohortDriller
-#
-# Drill down patients aggregated under cohort report indicators
-#
-#
-# == Examples:                                                                  
-#                                                                               
-# > require 'cohort_driller'                                                    
-# > cd = CohortDriller.new '1900-01-01', '2011-12-31', '/tmp/pat_ids.csv'       
-# > cd.dump_total_registered                                                    
-# > exec 'cat /tmp/pat_ids.csv'                                                 
-# > cd.total_alive_and_on_art.length                                            
-# > cd.dump_total_alive_and_on_art                                              
-# > exec 'cat /tmp/pat_ids.csv'
-#
+= CohortDriller
+
+Drill down patients aggregated under cohort report indicators
+
+
+== Examples:                                                                  
+                                                                               
+  > require 'cohort_driller'                                                    
+  > cd = CohortDriller.new '1900-01-01', '2011-12-31', '/tmp/pat_ids.csv'       
+  > cd.dump_total_registered                                                    
+  > exec 'cat /tmp/pat_ids.csv'                                                 
+  > cd.total_alive_and_on_art.length                                            
+  > cd.dump_total_alive_and_on_art                                              
+  > exec 'cat /tmp/pat_ids.csv'

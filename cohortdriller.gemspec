@@ -6,18 +6,19 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Baobab Health"]
-  s.date = %q{2012-05-04}
+  s.date = %q{2012-05-07}
   s.description = %q{Drill down cohort patients}
   s.email = %q{developers@baobabhealth.org}
-  s.extra_rdoc_files = ["LICENSE", "README.rdoc", "lib/drillable.rb",
+  s.extra_rdoc_files = ["README.rdoc", "lib/drillable.rb",
                         "lib/cohort_driller.rb"]
-  s.files = ["LICENSE", "Manifest", "README.rdoc", "Rakefile",
+  s.files = [
              "lib/drillable.rb", "lib/cohort_driller.rb",
              "lib/bart1.rb", "lib/bart2.rb",
              "spec/cohort_driller_spec.rb", "spec/spec_helper.rb",
              "cohortdriller.gemspec"]
   s.homepage = %q{http://github.com/baobabhealthtrust/cohortdriller}
-  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Migrator",
+  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", 
+                    "CohortDriller",
                     "--main", "README.rdoc"]
   s.require_paths = ["lib"]
   #s.rubyforge_project = %q{cohortdriller}
