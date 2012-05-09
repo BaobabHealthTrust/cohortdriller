@@ -18,9 +18,9 @@ module Drillable
   end
   
   def unknown_age
-    self.total_registered - (self.adult + 
-                             self.children_below_24_months_at_art_initiation +
-                             self.children_24_months_to_14yrs_at_art_initiation)
+    self.total_registered - (self.adults + 
+                             self.infants +
+                             self.children)
   end
   
   def unknown_or_other_reason_outside_guidelines
