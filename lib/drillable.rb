@@ -18,9 +18,9 @@ module Drillable
   end
   
   def unknown_age
-    self.total_registered - (self.adults + 
-                             self.infants +
-                             self.children)
+    self.total_registered.map(&:patient_id) - (self.adults.map(&:patient_id) + 
+                             self.infants.map(&:patient_id) +
+                             self.children.map(&:patient_id))
   end
   
   def unknown_or_other_reason_outside_guidelines

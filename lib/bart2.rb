@@ -35,16 +35,16 @@ class BART < Cohort
   end
   
   def infants
-    self.total_registered_by_gender_age(@start_date, @end_date, nil, 0, 730)
+    self.total_registered_by_gender_age(@start_date, @end_date, nil, 0, 731)
   end
   
   def children
-    self.total_registered_by_gender_age(@start_date, @end_date, nil, 730, 5110)
+    self.total_registered_by_gender_age(@start_date, @end_date, nil, 731, 5479)
   end
   
   def adults
     self.total_registered_by_gender_age(@start_date, @end_date,
-                                        nil, 5110, 109500)
+                                        nil, 5479, 109500)
   end
   
   def presumed_severe_hiv_disease_in_infants
