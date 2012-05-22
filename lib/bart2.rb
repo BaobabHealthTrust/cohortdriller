@@ -121,13 +121,14 @@ class BART < Cohort
     @cached_tb_status['TB STATUS']['On Treatment']
   end
   
-private    
+#private    
   # Pull out patients under a the given indicator
   def patients_with_start_reasons(values=nil)
     if values
       values = [values] unless values.is_a? Array
       @start_reasons ||= self.start_reason
       @start_reasons.map do |r|
+        next if r.name.blank?
         id = nil
         values.each do |v|
           if r.name.downcase.match(v.downcase)

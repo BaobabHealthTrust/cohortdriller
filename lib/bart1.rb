@@ -1,12 +1,14 @@
 
 class BART < Reports::CohortByRegistrationDate
 
+  BART_VERSION = 1
   include Drillable
   
   attr :cached_start_reasons
+  
     
-  alias :total_registered              :patients_started_on_arv_therapy
-  alias :patients_reinitiated_on_art   :re_initiated_patients
+  alias :total_registered               :patients_started_on_arv_therapy
+  alias :patients_reinitiated_on_art    :re_initiated_patients
   alias :patients_transferred_in_on_art :transfer_ins_started_on_arv_therapy
   
   alias :male             :men_started_on_arv_therapy
@@ -34,7 +36,7 @@ class BART < Reports::CohortByRegistrationDate
   alias :tb_confirmed_on_tb_treatment :tb_confirmed_not_on_treatment_patients
   
   def patients_initiated_on_art_first_time
-    self.total_registered - self.patients_transfered_in_on_art
+    self.total_registered - self.patients_transferred_in_on_art
   end
 
   def non_pregnant_females
@@ -60,32 +62,42 @@ class BART < Reports::CohortByRegistrationDate
   end
   
   def who_stage_3
-    self.patients_with_start_reasons 'WHO stage 3'
+    self.patients_with_start_reason 'WHO stage 3'
   end
   
   def who_stage_4
-    self.patients_with_start_reasons 'WHO stage 4'
+    self.patients_with_start_reason 'WHO stage 4'
   end
   
   def breastfeeding_mothers
-    self.patients_with_start_reasons 'Breastfeeding'
+    self.patients_with_start_reason 'Breastfeeding'
   end
   
   def pregnant
-    self.patients_with_start_reasons 'Pregnant'
+    self.patients_with_start_reason 'Pregnant'
   end
   
   def children_12_to_23_months
-    self.patients_with_start_reasons 'Child HIV Positive'
+    self.patients_with_start_reason 'Child HIV Positive'
   end
   
   
   # Stage defining conditions at ART initiation
-  
-  def current_episode_of_tb
-    self.patients_with_start_cause 'start_cause_current_tb'
+  def tb_within_the_last_2_years
+    self.find_patients_with_staging_observation(
+      [Concept.find_by_name('Pulmonary tuberculosis within the last 2 years').id,
+       Concept.find_by_name('Extrapulmonary tuberculosis').id])
   end
   
+  def current_episode_of_tb
+    self.find_patients_with_staging_observation(
+      [Concept.find_by_name('Pulmonary tuberculosis (current)').id])
+  end
+  
+  def kaposis_sarcoma
+    self.find_patients_with_staging_observation(
+      [Concept.find_by_name("Kaposi's sarcoma").id])
+  end
   
   # Primary Outcomes
   
