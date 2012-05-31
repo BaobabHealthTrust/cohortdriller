@@ -138,8 +138,30 @@ class BART < Reports::CohortByRegistrationDate
     if regimen_category == 'non-standard'
       self.non_standard_regimen
     else
-      self.regimen_type regimen_category
+      patients_list = self.regimen_type regimen_category
+      if patients_list.nil?
+        patients_list = []
+      end
+      patients_list
     end
+  end
+
+  #moved this to bart1 to properly format total_alive_and_on_art
+  def non_standard_regimen
+    self.total_alive_and_on_art.map(&:patient_id).collect {|i| 
+                                          i.to_s} - (self.arv_regimens('1A') +
+                                                     self.arv_regimens('1P') +
+                                                     self.arv_regimens('2A') +
+                                                     self.arv_regimens('2P') +
+                                                     self.arv_regimens('3A') +
+                                                     self.arv_regimens('3P') +
+                                                     self.arv_regimens('4A') +
+                                                     self.arv_regimens('4P') +
+                                                     self.arv_regimens('5A') +
+                                                     self.arv_regimens('6A') +
+                                                     self.arv_regimens('7A') +
+                                                     self.arv_regimens('8A') +
+                                                     self.arv_regimens('9P'))
   end
   
 end
