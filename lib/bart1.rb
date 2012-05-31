@@ -83,6 +83,10 @@ class BART < Reports::CohortByRegistrationDate
   
   
   # Stage defining conditions at ART initiation
+  def no_tb
+    self.total_registered - (self.tb_within_the_last_2_years +
+                             self.current_episode_of_tb)
+  end
   def tb_within_the_last_2_years
     self.find_patients_with_staging_observation(
       [Concept.find_by_name('Pulmonary tuberculosis within the last 2 years').id])

@@ -36,16 +36,16 @@ module Drillable
   end
   
   def no_tb
-    self.total_registered- (self.tb_within_the_last_2_years +
-                                               self.current_episode_of_tb)
+    self.total_registered - (self.tb_within_the_last_2_years.collect{|s| s.to_i } +
+                             self.current_episode_of_tb.collect{|s| s.to_i })
   end
   
   def unknown_outcome
     self.total_registered - (self.total_alive_and_on_art +
-                            self.died_total +
-                            self.defaulted +
-                            self.stopped_taking_arvs +
-                            self.transferred_out_patients)
+                             self.died_total +
+                             self.defaulted +
+                             self.stopped_taking_arvs +
+                             self.transferred_out_patients)
   end
   
   def unknown_tb_status
