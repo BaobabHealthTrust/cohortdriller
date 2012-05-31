@@ -28,6 +28,7 @@ class BART < Cohort
   alias :transferred_out      :transferred_out_patients
   
   alias :total_patients_with_side_effects :patients_with_side_effects
+  alias :tb_within_the_last_2_years :tb_within_the_last_2_yrs
 
   
   def male

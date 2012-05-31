@@ -18,13 +18,13 @@ module Drillable
   end
   
   def unknown_age
-    self.total_registered.map(&:patient_id) - (self.adults.map(&:patient_id) + 
-                             self.infants.map(&:patient_id) +
-                             self.children.map(&:patient_id))
+    self.total_registered - (self.adults +
+                             self.infants +
+                             self.children)
   end
   
   def unknown_or_other_reason_outside_guidelines
-    self.total_registered.map(&:patient_id) - (self.presumed_severe_hiv_disease_in_infants +
+    self.total_registered - (self.presumed_severe_hiv_disease_in_infants +
                              self.confirmed_HIV_infection_in_infants +
                              self.who_stage_1_or_2_CD4_below_threshold +
                              self.who_stage_2_total_lymphocytes_less_than_1200_per_mm3 +
@@ -36,16 +36,16 @@ module Drillable
   end
   
   def no_tb
-    self.total_registered.map(&:patient_id) - (self.tb_within_the_last_2_years.map(&:patient_id) +
-                                               self.current_episode_of_tb.map(&:patient_id))
+    self.total_registered- (self.tb_within_the_last_2_years +
+                                               self.current_episode_of_tb)
   end
   
   def unknown_outcome
-    self.total_registered.map(&:patient_id) - (self.total_alive_and_on_art.map(&:patient_id) +
-                            self.died_total.map(&:patient_id) +
-                            self.defaulted.map(&:patient_id) +
-                            self.stopped_taking_arvs.map(&:patient_id) +
-                            self.transferred_out_patients.map(&:patient_id))
+    self.total_registered - (self.total_alive_and_on_art +
+                            self.died_total +
+                            self.defaulted +
+                            self.stopped_taking_arvs +
+                            self.transferred_out_patients)
   end
   
   def unknown_tb_status
