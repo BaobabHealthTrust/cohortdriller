@@ -85,13 +85,13 @@ class BART < Reports::CohortByRegistrationDate
   # Stage defining conditions at ART initiation
   def tb_within_the_last_2_years
     self.find_patients_with_staging_observation(
-      [Concept.find_by_name('Pulmonary tuberculosis within the last 2 years').id,
-       Concept.find_by_name('Extrapulmonary tuberculosis').id])
+      [Concept.find_by_name('Pulmonary tuberculosis within the last 2 years').id])
   end
   
   def current_episode_of_tb
     self.find_patients_with_staging_observation(
-      [Concept.find_by_name('Pulmonary tuberculosis (current)').id])
+      [Concept.find_by_name('Pulmonary tuberculosis (current)').id,
+       Concept.find_by_name('Extrapulmonary tuberculosis').id])
   end
   
   def kaposis_sarcoma
