@@ -32,8 +32,8 @@ class BART < Reports::CohortByRegistrationDate
   alias :tb_not_suspected :tb_not_suspected_patients
   alias :tb_suspected     :tb_suspected_patients
   alias :tb_confirmed_not_yet_or_currently_not_on_tb_treatment 
-        :tb_confirmed_on_treatment_patients
-  alias :tb_confirmed_on_tb_treatment :tb_confirmed_not_on_treatment_patients
+        :tb_confirmed_not_on_treatment_patients
+  alias :tb_confirmed_on_tb_treatment :tb_confirmed_on_treatment_patients
   
   def patients_initiated_on_art_first_time
     self.total_registered - self.patients_transferred_in_on_art
