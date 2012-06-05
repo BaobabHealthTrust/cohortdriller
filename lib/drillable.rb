@@ -49,9 +49,9 @@ module Drillable
   end
   
   def unknown_tb_status
-    self.total_alive_and_on_art - (self.tb_not_suspected
-                                   self.tb_suspected
-                                   self.tb_confirmed_currently_not_yet_on_tb_treatment
+    self.total_alive_and_on_art - (self.tb_not_suspected +
+                                   self.tb_suspected +
+                                   self.tb_confirmed_currently_not_yet_on_tb_treatment +
                                    self.tb_confirmed_on_tb_treatment)
   end
   
