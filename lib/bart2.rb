@@ -112,7 +112,7 @@ class BART < Cohort
     @cached_tb_status['TB STATUS']['Suspected']
   end
   
-  def tb_confirmed_not_yet_or_currently_not_on_tb_treatment
+  def tb_confirmed_currently_not_yet_on_tb_treatment
     @cached_tb_status ||= self.tb_status 
     @cached_tb_status['TB STATUS']['Not on treatment']
   end
