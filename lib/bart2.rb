@@ -85,19 +85,19 @@ class BART < Cohort
   end
   
   def died_within_the_1st_month_of_art_initiation
-    self.total_number_of_died_within_range(0, 29)
+    self.total_number_of_died_within_range(0, 30.4375)
   end
   
   def died_within_the_2nd_month_of_art_initiation
-    self.total_number_of_died_within_range(29, 57)
+    self.total_number_of_died_within_range(30.4375, 60.875)
   end
   
   def died_within_the_3rd_month_of_art_initiation
-    self.total_number_of_died_within_range(57, 85)
+    self.total_number_of_died_within_range(60.875, 91.3125)
   end
   
   def died_after_the_3rd_month_of_art_initiation
-    self.total_number_of_died_within_range(85, 1000000)
+    self.total_number_of_died_within_range(91.3125, 1000000)
   end
   
   
