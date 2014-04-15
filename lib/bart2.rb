@@ -30,7 +30,6 @@ class BART < Cohort
   alias :total_patients_with_side_effects :patients_with_side_effects
   alias :tb_within_the_last_2_years :tb_within_the_last_2_yrs
 
-  
   def male
     self.total_registered_by_gender_age(@start_date, @end_date,'M')
   end
@@ -53,7 +52,7 @@ class BART < Cohort
   end
   
   def confirmed_HIV_infection_in_infants
-    self.patients_with_start_reasons 'confirmed'
+    self.patients_with_start_reasons ['confirmed','HIV DNA polymerase chain reaction']
   end
   
   def who_stage_1_or_2_CD4_below_threshold
