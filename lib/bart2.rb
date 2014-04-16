@@ -125,18 +125,23 @@ class BART < Cohort
   # Pull out patients under a the given indicator
   def patients_with_start_reasons(values=nil)
     if values
+      #avoid duplicates by keeping track of whoever has already been checked
+      check_existing = []  
       values = [values] unless values.is_a? Array
       @start_reasons ||= self.start_reason
       @start_reasons.map do |r|
-        next if r.name.blank?
-        id = nil
-        values.each do |v|
-          if r.name.downcase.match(v.downcase)
-            id = r.patient_id
-            break
+        unless check_existing.include?(r.patient_id)
+          check_existing << r.patient_id
+          next if r.name.blank?
+          id = nil
+          values.each do |v|
+            if r.name.downcase.match(v.downcase)
+              id = r.patient_id
+              break
+            end
           end
+          id
         end
-        id
       end.compact
     end
   end
